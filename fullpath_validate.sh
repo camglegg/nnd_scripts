@@ -1,12 +1,5 @@
-#!/bin/bash
-
-# Check if GAM is installed
-if ! command -v gam &> /dev/null; then
-    echo "GAM is not installed. Please install GAM first: https://github.com/jay0lee/GAM"
-    exit 1
-fi
-
-# We would set the gam peth variable here.
+# Looks like an issue with my local setup this should not be neccessary in production. We may need to check the path first... "which gam". We could then set the "gam=" variable technically
+gam="/Users/camglegg/bin/gam/gam"
 
 # Get Franchise Name as input
 read -p "Enter Franchise Name: " franchise_name
@@ -34,24 +27,12 @@ fi
 full_path="$base_path$franchise_country/${country_code}_${franchise_state}_$franchise_name"
 
 # Create top-level Franchise OU
-gam create org "$full_path"
+$gam create org "$full_path"
 
 # Create sub-OUs
 sub_ous=("Owner" "Operations" "CD" "CG")
 
 for sub_ou in "${sub_ous[@]}"; do
     sub_ou_path="$full_path/$sub_ou"
-    gam create org "$sub_ou_path"
+    $gam create org "$sub_ou_path"
 done
-
-# Create Groups. this currently looks wonky. needs work
-groups=("" "Sales" "IT") # These groups are wrong
-
-for sub_ou in "${sub_ous[@]}"; do
-    for group in "${groups[@]}"; do
-        full_group_name="${franchise_name}_${sub_ou}_${group}@nursenextdoor.com"
-        gam create group "$full_group_name" parentorg "$full_path/$sub_ou" # These cannot be assoscaited with the sub ou's
-    done
-done
-
-echo "OU and Groups created successfully for $franchise_name in $franchise_country."

@@ -1,0 +1,17 @@
+'{
+    "User": {
+        "CustomData": {
+            "Department": "Sales"
+        },
+        "user_type": "learner",
+        "last_name": "TestUserLastName",
+        "first_name": "TestUserFirstName",
+        "email": "testuser@samplelearningco.com",
+        "password": "123123",
+        "user_type": "manager",
+        "can_enroll": "true", # This is the default
+        "can_unenroll_users": "true",
+        "can_mark_complete": "true",
+        "can_move_groups": "true"
+    }
+}'

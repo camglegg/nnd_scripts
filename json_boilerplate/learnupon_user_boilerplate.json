@@ -1,8 +1,5 @@
 '{
     "User": {
-        "CustomData": {
-            "Department": "Sales"
-        },
         "user_type": "learner",
         "last_name": "TestUserLastName",
         "first_name": "TestUserFirstName",

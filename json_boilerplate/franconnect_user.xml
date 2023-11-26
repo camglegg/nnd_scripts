@@ -1,0 +1,34 @@
+<!--API End Point == /rest/dataservices/create?module=admin&subModule=user&xmlString=requiredxmlString&responseType=XML-->
+
+<?xml version='1.0' encoding='utf-8'?>
+<fcRequest>
+<adminUser>
+<userID>CarlW</userID>
+<password>Carl12345</password>
+<userLevel>Corporate</userLevel>
+<userLanguage>English</userLanguage>
+<timezone>GMT -06:30</timezone>
+<type>Normal</type>
+<expirationTime>NA</expirationTime>
+<role>Corporate Administrator</role>
+<jobTitle>Project Manager</jobTitle>
+<firstname>Carl</firstname>
+<lastname>Williams</lastname>
+<isAuditor>Y</isAuditor>
+<address>Street3, Hudson Lane</address>
+<city>Reston</city>
+<state>Virginia</state>
+<zipCode>201301</zipCode>
+<country>USA</country>
+<phone1>987654321</phone1>
+<phoneExt1>53</phoneExt1>
+<phone2>9876543210</phone2>
+<phoneExt2>63</phoneExt2>
+<fax>Fax</fax>
+<mobile>9876543210</mobile>
+<email>example@franconnect.com</email>
+<sendNotification>Y</sendNotification>
+<loginUserIp>192.169.1.214</loginUserIp>
+<isDaylight>Y</isDaylight>
+</adminUser>
+</fcRequest>

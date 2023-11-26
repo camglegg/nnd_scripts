@@ -55,3 +55,5 @@ for sub_ou in "${sub_ous[@]}"; do
 done
 
 echo "OU and Groups created successfully for $franchise_name in $franchise_country."
+
+# AlayaCare Api End Point is https://example.alayacare.ca/ext/api/v2/employees/employees/

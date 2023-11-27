@@ -32,17 +32,25 @@ make_request() {
 # Function to create a user and capture user_id
 create_user_and_capture_id() {
   read -p "Enter the email address for the new user: " USER_EMAIL
-  read -p "Enter the first name of the user" USER_FIRST
-  read -p "Enter the last name of the user" USER_LAST
+  read -p "Enter the first name of the user: " USER_FIRST
+  read -p "Enter the last name of the user: " USER_LAST
 
   USER_DATA='{
-    "first_name": "'"$USER_FIRST"'",
-    "last_name": "'"$USER_LAST"'",
-    "email": "'"$USER_EMAIL"'"
+    "User": {
+        "user_type" : "manager",
+        "last_name" : "'"$USER_LAST"'",
+        "first_name" : "'"$USER_FIRST"'",
+        "email" : "'"$USER_EMAIL"'",
+        "password" : "HappierAging123#@!",
+        "can_enroll" : "true", # This is the default
+        "can_unenroll_users" : "true",
+        "can_mark_complete" : "true",
+        "can_move_groups" : "true"
+    }
   }'
 
   # Create the user
-  response=$(make_request "POST" "$USER_DATA" "users")
+  response=$(make_request "POST" "$USER_DATA" "/users")
 
   # Extract user_id from the response
   user_id=$(echo "$response" | jq -r '.id')
@@ -51,26 +59,27 @@ create_user_and_capture_id() {
   echo "User created with user_id: $user_id"
 }
 
-# Example: Create a group
-create_group() {
-  GROUP_DATA='{
-    "name": "Sales Team"
-  }'
+create_user_and_capture_id
+# # Example: Create a group
+# create_group() {
+#   GROUP_DATA='{
+#     "name": "Sales Team"
+#   }'
 
-  make_request "POST" "$GROUP_DATA" "groups"
-}
+#   make_request "POST" "$GROUP_DATA" "groups"
+# }
 
-# Example: Associate a user with a group
-associate_user_with_group() {
-  USER_ID="USER_ID_HERE"  # Replace with the actual user ID
-  GROUP_ID="GROUP_ID_HERE"  # Replace with the actual group ID
+# # Example: Associate a user with a group
+# associate_user_with_group() {
+#   USER_ID="USER_ID_HERE"  # Replace with the actual user ID
+#   GROUP_ID="GROUP_ID_HERE"  # Replace with the actual group ID
 
-  make_request "PUT" '{}' "groups/$GROUP_ID/users/$USER_ID"
-}
+#   make_request "PUT" '{}' "groups/$GROUP_ID/users/$USER_ID"
+# }
 
-# Main script
+# # Main script
 
-# Uncomment the following lines to execute the examples
-# create_user
-# create_group
-# associate_user_with_group
+# # Uncomment the following lines to execute the examples
+# # create_user
+# # create_group
+# # associate_user_with_group
